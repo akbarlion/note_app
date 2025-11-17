@@ -17,6 +17,33 @@ class ListNoteScreenState extends State<ListNoteScreen> {
   bool _isHovered = false; // To track hover state for the add button
   bool _isHoveredDelete = false; // To track hover state for delete icon
 
+  void _showDeleteConfirmation(BuildContext context, note) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Delete Note'),
+          content: Text('Are you sure you want to delete "${note.title}"?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close dialog
+                context.read<NoteBloc>().add(DeleteNote(note)); // Delete note
+              },
+              child: const Text('Delete', style: TextStyle(color: Colors.red)),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // Load notes when the screen is first displayed
@@ -138,9 +165,7 @@ class ListNoteScreenState extends State<ListNoteScreen> {
                                 icon: const Icon(Icons.delete),
                                 iconSize: 24,
                                 onPressed: () {
-                                  context
-                                      .read<NoteBloc>()
-                                      .add(DeleteNote(note)); // Dispatch delete event
+                                  _showDeleteConfirmation(context, note);
                                 },
                                 color: _isHoveredDelete
                                     ? Colors.orange.shade900
