@@ -1,16 +1,31 @@
-# note_app
+# Note App
 
-A new Flutter project.
+A Flutter-based note-taking application for managing personal notes.
+
+## Features
+
+- Create, edit, and delete notes
+- Simple and intuitive user interface
+- Local storage for notes
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Clone this repository
+2. Run `flutter pub get` to install dependencies
+3. Run `flutter run` to start the app
 
-A few resources to get you started if this is your first Flutter project:
+## Requirements
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter SDK
+- Dart SDK
+- Android Studio / VS Code
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Project Structure
+
+```
+lib/
+├── main.dart          # App entry point
+├── models/            # Data models
+├── screens/           # UI screens
+└── widgets/           # Reusable widgets
+```
